@@ -28,7 +28,7 @@ jobs:
     - name: Build
       run: |
         dotnet build \
-        --configuration Release
+        --configuration Release \
         --output ./bin
 
     - name: Test
