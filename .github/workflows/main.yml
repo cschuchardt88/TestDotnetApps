@@ -25,20 +25,6 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Build
-      run: |
-        dotnet build \
-        --configuration Release \
-        --output ./bin
-
     - name: Test
-      if: ${{ matrix.os }} == 'windows-latest'
-      working-directory: ./bin
       run: |
-        ./TestSHA3.exe
-
-    - name: Test
-      if: ${{ matrix.os }} != 'windows-latest'
-      working-directory: ./bin
-      run: |
-        ./TestSHA3
+        dotnet run --project ./src/TestSHA3/TestSHA3.csproj
